@@ -10,6 +10,7 @@ import {Provider} from 'react-redux'
 import store from './store'
 
 import CounterRedux from './components/CounterRedux'
+import ApiRedux from './components/ApiRedux'
 
 class App extends React.Component {
 
@@ -62,6 +63,7 @@ class App extends React.Component {
           <h2>Redux itu seru</h2>
 
           <CounterRedux />
+          <ApiRedux />
         </div>
       </Provider>
     )
