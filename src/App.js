@@ -6,6 +6,11 @@ import Person from './components/Person'
 import Button from './components/Button'
 import './App.css';
 
+import {Provider} from 'react-redux'
+import store from './store'
+
+import CounterRedux from './components/CounterRedux'
+
 class App extends React.Component {
 
   // constructor() {
@@ -52,23 +57,13 @@ class App extends React.Component {
   render() {
     const {people, todos, newTodo, klass} = this.state
     return (
-      <div className="App">
-        <h1>
-          {klass}
-        </h1>
-        {
-          todos.map((todo, i) => <h4 key={i}>{todo}</h4>)
-        }
+      <Provider store={store}>
+        <div className="App">
+          <h2>Redux itu seru</h2>
 
-        <Input onChange={this.changeTodo} value={newTodo} />
-
-        <Button click={this.addTodo} />
-        {
-          people.map(person => (
-            <Person data={person}/>
-          ))
-        }
-      </div>
+          <CounterRedux />
+        </div>
+      </Provider>
     )
   }
 }
