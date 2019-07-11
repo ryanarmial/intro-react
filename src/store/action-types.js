@@ -1,0 +1,2 @@
+export const CHANGE_KLASS = "CHANGE_KLASS"
+export const GET_PEOPLE_SUCCESS = "GET_PEOPLE_SUCCESS"
