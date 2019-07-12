@@ -1,36 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
-import axios from 'axios'
+import useApi from './../hooks/useApi'
 
-
-function useApi() {
-  // loading, error, berhasil
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState({})
-  const [data, setData] = useState({})
-}
-
-
-function CounterHooks(props) {
+function CounterHooks() {
   const [counter, setCounter] = useState(1)
   const [name, setName] = useState('Kosasih')
-  const [swapi, setSwapi] = useState([])
+  const [loadingSwapi, errorSwapi, swapi] = useApi(`https://swapi.co/api/people/${counter}`)
   
-  // cara ke dua 
-  // const [state, setState] = useState({
-  //   counter: 0,
-  //   name: 'kosasih'
-  // })
-
-  useEffect(() => {
-    console.log('trigger ga nich?')
-    axios.get(`https://swapi.co/api/people/${counter}`)
-      .then(({data}) => {
-        console.log(data)
-        setSwapi(data)
-      })
-  }, [counter])
-
   return (
     <div>
       <h3>Jumlah Aku adalah {counter}</h3>
@@ -41,7 +17,12 @@ function CounterHooks(props) {
     
       <h3>I am your father 🎅🏿</h3>
 
-      {JSON.stringify(swapi)}
+      {loadingSwapi && 'Tahan dlu mas lagi di proses'}
+
+      {!loadingSwapi && swapi && <div>{JSON.stringify(swapi)}</div> }
+
+      {!loadingSwapi && errorSwapi && <div>{JSON.stringify(errorSwapi)}</div>}
+
     </div>
   )
 }
