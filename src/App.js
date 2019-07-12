@@ -12,6 +12,10 @@ import store from './store'
 import CounterRedux from './components/CounterRedux'
 import ApiRedux from './components/ApiRedux'
 
+import CounterHooks from './components/CounterHooks'
+
+
+
 class App extends React.Component {
 
   // constructor() {
@@ -60,10 +64,9 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <h2>Redux itu seru</h2>
+          <h3>Hooks Lebih Seru</h3>
 
-          <CounterRedux />
-          <ApiRedux />
+          <CounterHooks />
         </div>
       </Provider>
     )
